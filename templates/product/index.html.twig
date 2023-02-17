@@ -1,20 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Hello ProductController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/DELL/shop_demo/src/Controller/ProductController.php'|file_link(0) }}">src/Controller/ProductController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/DELL/shop_demo/templates/product/index.html.twig'|file_link(0) }}">templates/product/index.html.twig</a></code></li>
-    </ul>
-</div>
+  <div className="page-heading pb-2 mt-4 mb-2 ">
+                    <h3>Manager</h3> <a href="{{path('product_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
+                </div>
+                <div class="page-content">
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+               
+                </div>
+                <div class="card">
+                    <div class="container mb-3">
+                        <div class="table-responsive text-nowrap">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                          {% for p in products %}
+                              <tr>
+                                  <td>{{ p.id}}</td>
+                                  <td>{{ p.namep}}</td>
+                                  <td>{{ p.pricep}}</td>
+                                  <td>{{ p.quantity}}</td>
+                                  <td>{{ p.description}}</td>
+                                  <td>
+                                    <a href="{{path('product_edit',{'id':p.id})}}">Edit</a>
+                                  <a href="{{path('product_delete',{'id':p.id})}}">Delete</a></td>
+                              </tr>
+                          {% endfor %}
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+                </div>
+                </div>
 {% endblock %}

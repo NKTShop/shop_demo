@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+<style>
+a{
+    color: #2fbda0;
+    text-decoration: auto;
+}
+
+.card{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.cotennt{
+    margin-top: 100px;
+}
+h1.h1{
+    color: black;
+    border-right: 1px solid black
+}
+.h2.h2{
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: black;
+}
+
+p{
+    padding-left: 20px;
+}
+
+.background {
+  margin-top: 100px;
+  background-image: url("../images/banner2.webp");
+  width: 100%;
+  height: 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+</style> 
+    <div class="cotennt justify-content-center d-flex">
+        <h1 class="h1 column col-4 ">CLOTHING BUILT TO OUTLIVE YOU</h1>
+        <p class="column col-6  ">We create high quality products, we always focus on top goals such as, aesthetics, quality, style, innovation and customers. </p>
+    </div>
+    <div class="background col-12 d-xl-block"></div>
+    <h2 class="h2">Products Of Us </h2>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            {% for p in products %}
+            <div class="card col-3 mx-2 d-flex" style="width: 18rem;">
+            {% set img = p.image %}
+                <img src="{{asset('uploads/'~img)}}" class="card-img-top" alt="..." height="350px">
+        
+                <div class="card-body">
+                    <a class="card-title" href="{{ path('product_read', {'id': p.id}) }}" >{{ p.Namep }}</a>
+                    <p class="card-text">{{ p.Pricep }}$</p>
+                </div>
+            </div>
+                {% endfor %}
+        
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product!{% endblock %}
+
+{% block body %}
+<section class="section gallery">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h1 class="font-weight-bold"></h1>
+      </div>
+      {% for p in pro %}
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="block">
+          <div class="gallery-overlay">
+            <a href="{{path('productdetail',{'id':p.id})}}" class="gallery-popup">
+              <i class="tf-ion-plus-round"></i>
+            </a>
+          </div>
+           {% if p.image %}
+                  {% set img = p.image %}
+          <div data-image="{{asset('images/'~img)}}">
+            {# <img class="img-fluid w-100" src="images/{{pro.image}}" alt="product-image"> #}
+             <img class="img-fluid" src="{{asset('images/'~img)}}" alt="Apple Watch">
+          </div>
+          {% else %}
+                    <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Ffile.tinnhac.com%2Fresize%2F600x-%2F2019%2F12%2F17%2F20191217175344-6383.png&imgrefurl=https%3A%2F%2Ftinnhac.com%2Fbao-nam-qua-nhung-anh-meme-cua-cac-ngoi-sao-sau-van-duoc-dan-tinh-ua-chuong-rai-tren-mang-xa-hoi-134961.html&tbnid=L9SRdRAn8I9fCM&vet=12ahUKEwjS9-Ks1PD8AhWmjNgFHRphA10QMygDegUIARC5AQ..i&docid=vyxwNLVwldLuuM&w=600&h=512&q=meme&ved=2ahUKEwjS9-Ks1PD8AhWmjNgFHRphA10QMygDegUIARC5AQ" alt="" class="mt-3 mb-3">
+                {% endif %}
+        </div>
+        <div class="product-info">
+        <h4 class="mb-2"><a href="{{path('productdetail',{'id':p.id})}}" class="link-title">{{p.Namep}}</a></h4>
+        <p class="price">${{p.Pricep}}
+          <!-- <s class="price">$30.00</s> -->
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script src="plugins/jquery/jquery.js"></script>
+
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="plugins/slick/slick.min.js"></script>
+
+<script src="js/script.js"></script>
+</body>
+</html>
+{% endblock %}

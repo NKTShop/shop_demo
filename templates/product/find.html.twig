@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h1>Car</h1>
+
+  <table>
+    <tbody>
+    <tr>
+      <th>Id</th>
+      <td>{{ pr.id }}</td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td>{{ pr.Namep }}</td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td>{{ pr.Desciption }}</td>
+    </tr>
+    {# <tr>
+      <th>Travelleddistance</th>
+      <td>{{ car.travelledDistance }}</td>
+    </tr>
+    </tbody> #}
+  </table>
+
+  <ul>
+    <li>
+      <a href="{{ path('app_home') }}">Back to the list</a>
+    </li>
+  </ul>
+{% endblock %}
