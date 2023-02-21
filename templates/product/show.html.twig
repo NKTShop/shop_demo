@@ -42,6 +42,20 @@ p{
   background-attachment: fixed;
 }
 
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+    clear: both;
+    font-weight: 600;
+    color: var(--bs-dropdown-link-color);
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}   
+
 </style> 
     <div class="cotennt justify-content-center d-flex">
         <h1 class="h1 column col-4 ">CLOTHING BUILT TO OUTLIVE YOU</h1>
@@ -51,6 +65,12 @@ p{
     <h2 class="h2">Products Of Us </h2>
 
     <div class="container-fluid">
+        {# {% for br in brand %}
+        <button type="submit"class="btn btn-secondary" href="{{ path('app_brand', {id:br.id})}}">{{br.namecate}}</button>
+        {% endfor %}  #}
+            {% for br in brand %}
+                <h3><a class= "dropdown-item" href="{{ path('app_brand', {id:br.id})}}">{{br.namecate}}<a/> </h3>
+            {% endfor %}
         <div class="row justify-content-center">
             {% for p in products %}
             <div class="card col-3 mx-2 d-flex" style="width: 18rem;">
@@ -58,8 +78,8 @@ p{
                 <img src="{{asset('uploads/'~img)}}" class="card-img-top" alt="..." height="350px">
         
                 <div class="card-body">
-                    <a class="card-title" href="{{ path('product_read', {'id': p.id}) }}" >{{ p.Namep }}</a>
-                    <p class="card-text">{{ p.Pricep }}$</p>
+                    <a class="card-title" href="{{ path('product_detail', {'id': p.id}) }}" >{{ p.namep }}</a>
+                    <p class="card-text">{{ p.pricep }}$</p>
                 </div>
             </div>
                 {% endfor %}

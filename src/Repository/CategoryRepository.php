@@ -45,8 +45,8 @@ class CategoryRepository extends ServiceEntityRepository
     public function findbrand($value): array
     {
         return $this->createQueryBuilder('s')
-            ->select("p.id, p.Namep , p.Pricep, p.image, p.Description")
-            ->innerJoin('s.p', 's.p')
+            ->select("p.id, p.namep , p.pricep, p.image, p.description")
+            ->innerJoin('s.categoryy', 'p')
             ->andWhere('s.id = :val')
             ->setParameter('val', $value)
             ->getQuery()

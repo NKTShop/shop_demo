@@ -3,38 +3,56 @@
 {% block title %}Product!{% endblock %}
 
 {% block body %}
+
+
+<style>
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+    clear: both;
+    font-weight: 600;
+    color: var(--bs-dropdown-link-color);
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}   
+
+.h2.h2{
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: black;
+} 
+</style>
+
 <section class="section gallery">
   <div class="container">
+  <h2 class="h2 text-center">Products Of Us </h2>
+    {% for br in brand %}
+                <h3><a class= "dropdown-item" href="{{ path('app_brand', {id:br.id})}}">{{br.namecate}}<a/> </h3>
+            {% endfor %}
     <div class="row">
       <div class="col-12 text-center mb-5">
         <h1 class="font-weight-bold"></h1>
       </div>
-      {% for p in pro %}
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="block">
-          <div class="gallery-overlay">
-            <a href="{{path('productdetail',{'id':p.id})}}" class="gallery-popup">
-              <i class="tf-ion-plus-round"></i>
-            </a>
-          </div>
-           {% if p.image %}
-                  {% set img = p.image %}
-          <div data-image="{{asset('images/'~img)}}">
-            {# <img class="img-fluid w-100" src="images/{{pro.image}}" alt="product-image"> #}
-             <img class="img-fluid" src="{{asset('images/'~img)}}" alt="Apple Watch">
-          </div>
-          {% else %}
-                    <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Ffile.tinnhac.com%2Fresize%2F600x-%2F2019%2F12%2F17%2F20191217175344-6383.png&imgrefurl=https%3A%2F%2Ftinnhac.com%2Fbao-nam-qua-nhung-anh-meme-cua-cac-ngoi-sao-sau-van-duoc-dan-tinh-ua-chuong-rai-tren-mang-xa-hoi-134961.html&tbnid=L9SRdRAn8I9fCM&vet=12ahUKEwjS9-Ks1PD8AhWmjNgFHRphA10QMygDegUIARC5AQ..i&docid=vyxwNLVwldLuuM&w=600&h=512&q=meme&ved=2ahUKEwjS9-Ks1PD8AhWmjNgFHRphA10QMygDegUIARC5AQ" alt="" class="mt-3 mb-3">
-                {% endif %}
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+            {% for p in pro %}
+            <div class="card col-3 mx-2 d-flex" style="width: 18rem;">
+            {% set img = p.image %}
+                <img src="{{asset('uploads/'~img)}}" class="card-img-top" alt="..." height="350px">
+        
+                <div class="card-body">
+                    <a class="card-title" href="{{ path('product_detail', {'id': p.id}) }}" >{{ p.namep }}</a>
+                    <p class="card-text">{{ p.pricep }}$</p>
+                </div>
+            </div>
+                {% endfor %}
         </div>
-        <div class="product-info">
-        <h4 class="mb-2"><a href="{{path('productdetail',{'id':p.id})}}" class="link-title">{{p.Namep}}</a></h4>
-        <p class="price">${{p.Pricep}}
-          <!-- <s class="price">$30.00</s> -->
-          </p>
-        </div>
-      </div>
-      {% endfor %}
+    </div>
     </div>
   </div>
 </section>

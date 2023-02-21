@@ -22,7 +22,7 @@
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
           <div class="card-body p-0">
             <div class="row g-0">
-              
+                
             <div class="col-lg-5 p-5">
                     <div class="image_selected ms-3">
                     {% set img = p.image %}
@@ -32,11 +32,11 @@
                 </div>
                 <div class="col-lg-7 p-5">
                     <div class="product_description">
-                        <div class="product_name">{{p.Namep}}</div>
+                        <div class="product_name">{{p.namep}}</div>
                         <p>{{p.description}}</p>
-                        <div> <span class="product_price"><span></span> $ {{p.Pricep}}</div>
+                        <div> <span class="product_price"><span></span> $ {{p.pricep}}</div>
                         <div>  
-                            <span class="product_info">In Stock: {{p.quantity}}<span> </div>
+                            {# <span class="product_info">In Stock: {{p.quantity}}<span> </div> #}
                         <hr class="singleline">
                         <div class="order_info d-flex flex-row">
                             <form action="#">

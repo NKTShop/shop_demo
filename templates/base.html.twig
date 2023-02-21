@@ -15,10 +15,13 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+
+
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Shop</a>
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img style="max-width: 100px" src=""></img></a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,35 +41,29 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ path('app_bill')}}">Receipt</a>
         </li>
-         {# <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_register') }}">Registration</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_login') }}">Login</a>
-        </li>
+        {% if is_granted('ROLE_ADMIN') %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
-        </li> #}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Brand</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Woman</a>
-            <a class="dropdown-item" href="#">Man</a>
-          </div>
+          <a class="nav-link" href="{{ path('product_show')}}">Manage</a>
         </li>
+        {% endif %}
+
+        {# {% for br in brand %}
+          <li><a class= "dropdown-item" href="{{ path('app_brand', {id:br.id})}}">{{br.namecate}}<a/> </li>
+        {% endfor %} #}
+
+        {# {% for br in brand %}
+        <button type="button" class="btn btn-secondary" href="{{ path('app_brand', {id:br.id})}}">{{br.namecate}}</button>
+        {% endfor %}  #}
+
         <form class="d-flex">
         <input class="form-control me-sm-2" type="search" placeholder="Search">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
       </ul>
-      {# <form class="d-flex">
-        <input class="form-control me-sm-2" type="search" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form> #}
         <div class="mx-2">
         {% if app.user %}
         <div class="list-inline-item">
-            <a class="nav-link">{{ app.user.name }},</a>
+            <a class="nav-link">Wellcome {{ app.user.name }},</a>
             {# {{ app.user.userIdentifier }} #}
         </div>
         <div class="list-inline-item" >
@@ -80,10 +77,7 @@
             <a class="nav-link" href="{{path('app_register')}}">Registration</a>
           </li>
       {% endif %}
-        
-        {# <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
-        </li> #}
+
     </div>
   </div>
 </nav>

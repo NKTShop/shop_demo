@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -37,12 +38,15 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="product_read",requirements={"id"="\d+"})
+     * @Route("/{id}", name="product_detail",requirements={"id"="\d+"})
      */
-    public function showAction(Product $p): Response
+    public function showAction(Product $p, CategoryRepository $repo, $id): Response
     {
+        // $p = $repo->findbrand($id);
+        $br = $repo->findAll();
         return $this->render('product/detail.html.twig', [
-            'p' => $p
+            'p' => $p,
+            'brand' => $br
         ]);
     }
 
@@ -173,11 +177,14 @@ class ProductController extends AbstractController
     /**
      * @Route("/showpr", name="app_showall")
      */
-    public function showallProductt(ProductRepository $repo, Request $req): Response
+    public function showallProductt(ProductRepository $repo, CategoryRepository $repo1, Request $req): Response
     {
+        $br = $repo1->findAll();
         $products = $repo->findAll();
         return $this->render('product/show.html.twig', [
-            'products' => $products
+            'products' => $products,
+            'brand' => $br
+
         ]);
     }
 }

@@ -79,6 +79,19 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    /**
+         * @Route("/brand/{id}", name="app_brand")
+         */
+    public function showbrand(CategoryRepository $repo, $id, Category $category): Response
+    {   $br= $repo->findAll();
+        $p= $repo->findbrand($id);
+        return $this->render('brand/index.html.twig', [
+            'pro'=> $p,
+            'brand'=>$br
+        ]);
+    }
+
+
     //DELETE CATEGORY
         /**
      * @Route("/delete/{id}",name="category_delete",requirements={"id"="\d+"})
@@ -94,3 +107,4 @@ class CategoryController extends AbstractController
      //USER
      
 }
+
