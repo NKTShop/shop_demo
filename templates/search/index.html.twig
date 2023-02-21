@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product!{% endblock %}
+
+{% block body %}
+
+
+<style>
+.card{
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.cotennt{
+    margin-top: 50px;
+}
+
+.h2.h2{
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: black;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+    clear: both;
+    font-weight: 600;
+    color: var(--bs-dropdown-link-color);
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}   
+
+</style>
+<section class="section gallery">
+  <div class="container-fluid">
+  <h2 class="h2 text-center">Result </h2>
+
+            <div class="row justify-content-center">
+            {% for p in pro %}
+            <div class="card col-3 mx-2 d-flex" style="width: 18rem;">
+            {% set img = p.image %}
+                <img src="{{asset('uploads/'~img)}}" class="card-img-top" alt="..." height="350px">
+        
+                <div class="card-body">
+                    <a class="card-title" href="{{ path('product_detail', {'id': p.id}) }}" >{{ p.namep }}</a>
+                    <p class="card-text">{{ p.pricep }}$</p>
+                </div>
+            </div>
+                {% endfor %}
+        
+        </div>
+    </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
+{% endblock %}

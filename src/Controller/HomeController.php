@@ -19,16 +19,16 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/brand", name="nameBrand")
-     */
-    public function showBrand(CategoryRepository $repo, $brand): Response
-    {
-        $br= $brand->findAll();
-        $pro= $repo->findAll();
-        return $this->render('base.html.twig', [
-            'pro'=> $pro,
-            'brand'=>$br
-        ]);
-    }
+    // /**
+    //  * @Route("/brand", name="nameBrand")
+    //  */
+    // public function showBrand(CategoryRepository $repo, $brand): Response
+    // {
+    //     $br= $brand->findAll();
+    //     $pro= $repo->findAll();
+    //     return $this->render('base.html.twig', [
+    //         'pro'=> $pro,
+    //         'brand'=>$br
+    //     ]);
+    // }
 }

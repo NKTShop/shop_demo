@@ -79,10 +79,18 @@
         <button type="button" class="btn btn-secondary" href="{{ path('app_brand', {id:br.id})}}">{{br.namecate}}</button>
         {% endfor %}  #}
 
-        <form class="d-flex">
-        <input class="form-control me-sm-2" type="search" placeholder="Search">
+        {# <form class="d-flex">
+        <input class="form-control me-sm-2" type="search" placeholder="Search" name="search" action="search" methods="GET">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form> #}
+
+      <div class="search">
+                        <form class="searchbox d-flex" action="/search" method="GET">
+                            <input type="text" class="form-control" placeholder="Search..." name="search">
+                            {# <button class="search_button"><i class="fa fa-fw fa-search text-dark mr-2"></i></button> #}
+                            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
       </ul>
         <div class="mx-2">
         {% if app.user %}
