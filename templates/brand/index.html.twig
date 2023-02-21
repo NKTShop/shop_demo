@@ -6,6 +6,22 @@
 
 
 <style>
+.card{
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.cotennt{
+    margin-top: 50px;
+}
+
+.h2.h2{
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: black;
+}
+
 .dropdown-item {
     display: block;
     width: 100%;
@@ -20,26 +36,15 @@
     border: 0;
 }   
 
-.h2.h2{
-    margin-top: 50px;
-    text-align: center;
-    margin-bottom: 50px;
-    color: black;
-} 
 </style>
-
 <section class="section gallery">
-  <div class="container">
+  <div class="container-fluid">
   <h2 class="h2 text-center">Products Of Us </h2>
     {% for br in brand %}
                 <h3><a class= "dropdown-item" href="{{ path('app_brand', {id:br.id})}}">{{br.namecate}}<a/> </h3>
-            {% endfor %}
-    <div class="row">
-      <div class="col-12 text-center mb-5">
-        <h1 class="font-weight-bold"></h1>
-      </div>
-      <div class="container-fluid">
-        <div class="row justify-content-center">
+    {% endfor %}
+
+            <div class="row justify-content-center">
             {% for p in pro %}
             <div class="card col-3 mx-2 d-flex" style="width: 18rem;">
             {% set img = p.image %}
@@ -51,19 +56,12 @@
                 </div>
             </div>
                 {% endfor %}
+        
         </div>
     </div>
     </div>
   </div>
 </section>
-
-<script src="plugins/jquery/jquery.js"></script>
-
-<script src="plugins/bootstrap/bootstrap.min.js"></script>
-
-<script src="plugins/slick/slick.min.js"></script>
-
-<script src="js/script.js"></script>
 </body>
 </html>
 {% endblock %}
