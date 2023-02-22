@@ -14,8 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 
-// /**
-
+/**
+ * @Route("/product")
+ */ 
 class ProductController extends AbstractController
 {
 
@@ -117,6 +118,7 @@ class ProductController extends AbstractController
         return $newFilename;
     }
 
+    //DELETE
     /**
      * @Route("/delete/{id}",name="product_delete",requirements={"id"="\d+"})
      */
@@ -127,15 +129,7 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
     }
 
-    // /**
-    //  * @Route("/findpro/{id}", name="app_findpro",requirements={"id"="\d+"})
-    //  */
-    // public function findproduct(Product $pr)
-    // {
-    //     return $this->render('product/find.html.twig', array(
-    //         'products' => $pr
-    //     ));
-    // }
+
 
 
 
@@ -187,17 +181,5 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-         * @Route("/search", name="search", methods={"GET"})
-         */
-        public function actionSearch(Request $req, ProductRepository $repo, CategoryRepository $repo1): Response
-        {
-            $br = $repo1->findAll();
-            $sName = $req->query->get("search"); 
-            $product= $repo->findBysearchproduct($sName);
-            return $this->render('search/index.html.twig', [
-                'pro' => $product,
-                'brand' => $br
-            ]);
-        }
+
 }

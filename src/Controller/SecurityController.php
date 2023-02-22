@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\BrowserKit\Response as BrowserKitResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -10,10 +14,12 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route('/security', name: 'app_security')]
-    public function index(): Response
+    public function index(ProductRepository $repo, CategoryRepository $repo1, Request $req): Response
     {
+         $br = $repo1->findAll();
         return $this->render('security/index.html.twig', [
             'controller_name' => 'SecurityController',
+            'brand'=> $br
         ]);
     }
 

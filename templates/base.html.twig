@@ -46,20 +46,6 @@
           <a class="nav-link" href="{{ path('product_show')}}">Manage</a>
         </li>
         {% endif %}
-{# 
-  <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        Management
-                    </a>
-                    <div class="dropdown-menu">
-                      {% for br in brand %}
-                        <li><a class= "dropdown-item" href="{{ path('app_brand', {id:br.id})}}">{{br.namecate}}<a/> </li>
-                      {% endfor %}
-                    </div>
-                </div> #}
-
-
-
 
       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-bs-toggle="dropdown"
@@ -74,15 +60,6 @@
         {# {% for br in brand %}
           <li><a class= "dropdown-item" href="{{ path('app_brand', {id:br.id})}}">{{br.namecate}}<a/> </li>
         {% endfor %} #}
-
-        {# {% for br in brand %}
-        <button type="button" class="btn btn-secondary" href="{{ path('app_brand', {id:br.id})}}">{{br.namecate}}</button>
-        {% endfor %}  #}
-
-        {# <form class="d-flex">
-        <input class="form-control me-sm-2" type="search" placeholder="Search" name="search" action="search" methods="GET">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form> #}
 
       <div class="search">
                         <form class="searchbox d-flex" action="/search" method="GET">

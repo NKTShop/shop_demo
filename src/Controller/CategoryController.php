@@ -83,7 +83,7 @@ class CategoryController extends AbstractController
 
     //DELETE CATEGORY
         /**
-     * @Route("/delete/{id}",name="category_delete",requirements={"id"="\d+"})
+     * @Route("/delete/{id}", name="category_delete",requirements={"id"="\d+"})
      */
     
      public function deleteAction(Request $request, Category $c): Response

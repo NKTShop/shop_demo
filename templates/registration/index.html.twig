@@ -13,10 +13,14 @@
     margin-top: 40px;
 }
 </style>
-    <h1 class="register">Registration Form</h1>
+    <h1 class="register" name="register">Registration Form</h1>
 {% endblock %}
     {{ form_start(registrationForm) }}
     {{ form_widget(registrationForm) }}
     {{ form_end(registrationForm) }}
+    <div class="register collection__data">
+        <a href="{{ path('app_login')}}" class="collection__view">Login</a>
+    </div>
 </div>
 {% endblock %}
+
